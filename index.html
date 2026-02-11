@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta Día de los Amigos - Diana</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background">
+        <div class="stars"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <div class="container">
+        <!-- Tarjeta Principal -->
+        <div class="card" id="mainCard">
+            <div class="card-front">
+                <div class="card-content">
+                    <div class="emoji-rain" id="emojiRain"></div>
+                    
+                    <div class="title-container">
+                        <h1 class="title-main">¡DIANA!</h1>
+                        <div class="heart-pulse">❤️</div>
+                    </div>
+
+                    <div class="subtitle-glow">
+                        <p>Mi mejor amiga</p>
+                        <p>En el día especial de la Amistad</p>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="flipCard()">Abre la tarjeta</button>
+                        <button class="btn btn-secondary" onclick="triggerConfetti()">¡Celebrar!</button>
+                    </div>
+
+                    <div class="scroll-hint">
+                        ↓ Scroll para ver más ↓
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido Expandible -->
+        <div class="expanded-content" id="expandedContent">
+            <!-- Sección 1: Mensaje Especial -->
+            <section class="section section-1">
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">Un Mensaje para Ti</h2>
+                        <span class="sparkle">✨</span>
+                    </div>
+                    <div class="message-box">
+                        <p class="message-text">
+                            Diana, no es un secreto que eres especial. Desde nuestras conversaciones sobre espaguetis hasta tus sueños en medicina forense, 
+                            cada momento contigo es memorable. Tu risa contagiosa, tu inteligencia (¡devoras química!), y esa forma de apoyarme 
+                            sin importar qué tan loco sea mi plan... eso es lo que hace que seas mi mejor amiga.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 2: Galería de Momentos -->
+            <section class="section section-2">
+                <div class="section-card">
+                    <h2 class="section-title">Nuestros Momentos</h2>
+                    <div class="moments-gallery">
+                        <div class="moment-card" onclick="showMoment(this)">
+                            <div class="moment-emoji">😂</div>
+                            <p class="moment-title">Risas sin fin</p>
+                            <p class="moment-subtitle">De tus "jajajajaja"</p>
+                        </div>
+                        <div class="moment-card" onclick="showMoment(this)">
+                            <div class="moment-emoji">📚</div>
+                            <p class="moment-title">Estudiantes</p>
+                            <p class="moment-subtitle">Carreras, sueños y metas</p>
+                        </div>
+                        <div class="moment-card" onclick="showMoment(this)">
+                            <div class="moment-emoji">💪</div>
+                            <p class="moment-title">Apoyo Real</p>
+                            <p class="moment-subtitle">"Tú puedes, devora"</p>
+                        </div>
+                        <div class="moment-card" onclick="showMoment(this)">
+                            <div class="moment-emoji">🎯</div>
+                            <p class="moment-title">Determinación</p>
+                            <p class="moment-subtitle">Cumplir sueños juntos</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 3: Datos Curiosos -->
+            <section class="section section-3">
+                <div class="section-card">
+                    <h2 class="section-title">Lo que me Encanta de Ti</h2>
+                    <div class="features-grid">
+                        <div class="feature-box">
+                            <span class="feature-number">1</span>
+                            <h3>Tu Química</h3>
+                            <p>¡Devoras química como si nada! Eso es impresionante.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="feature-number">2</span>
+                            <h3>Tu Humor</h3>
+                            <p>Tus "jajajajaja" son la mejor medicina del mundo.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="feature-number">3</span>
+                            <h3>Tu Apoyo</h3>
+                            <p>Siempre creyendo en mis sueños, incluso los locos.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="feature-number">4</span>
+                            <h3>Tu Empatía</h3>
+                            <p>Entiendes a los demás, comprendes las luchas estudiantiles.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="feature-number">5</span>
+                            <h3>Tu Energía</h3>
+                            <p>Aún con todo, "hoy estoy con ánimos jiji" siempre.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="feature-number">6</span>
+                            <h3>Tu Corazón</h3>
+                            <p>Genuina, real, sincera. Lo mejor de todo.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 4: Interactiva -->
+            <section class="section section-4">
+                <div class="section-card">
+                    <h2 class="section-title">Desbloquea Sorpresas</h2>
+                    <div class="interactive-zone">
+                        <button class="surprise-btn" onclick="revealSurprise('surprise-1')">💌 Lee la Carta Especial</button>
+                        <div id="surprise-1" class="surprise-content hidden">
+                            <p>
+                                Diana, quería decirte que tu determinación me inspira. Estudiar Ingeniería Ambiental con Química como tu fuerte, 
+                                soñando con medicina forense... eso es ser valiente. Y aunque no todo sale como planeamos, tú siempre encuentras la manera 
+                                de seguir adelante. Eso es admirable. Gracias por creer en mis sueños cuando yo dudo. Gracias por estar ahí.
+                            </p>
+                        </div>
+
+                        <button class="surprise-btn" onclick="revealSurprise('surprise-2')">
+                            🎁 Tu Anécdota Favorita
+                        </button>
+                        <div id="surprise-2" class="surprise-content hidden">
+                            <p>
+                                Recuerdo cuando me preguntaste qué había cocinado... arroz y pasta, espaguetis XD. Y tu "Xd jajajajaja, terrible, 
+                                que ya me imaginó xd" me hizo reír. Esos momentos simples, donde podemos ser nosotros mismos sin pretensiones, 
+                                son los que más valoro. Tú haces que incluso mis desastres culinarios sean memorables. 😄
+                            </p>
+                        </div>
+
+                        <button class="surprise-btn" onclick="revealSurprise('surprise-3')">
+                            🌟 Tu Misión Especial
+                        </button>
+                        <div id="surprise-3" class="surprise-content hidden">
+                            <p>
+                                Mi misión: Apoyarte para que consigas esa especialización en Ingeniería Química y que cumplas tus sueños en 
+                                medicina forense. Porque alguien con tu pasión, inteligencia y corazón definitivamente puede cambiar el mundo. 
+                                Cuenta conmigo. Siempre. 💪
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 5: Día de la Amistad -->
+            <section class="section section-5">
+                <div class="section-card friendship-card">
+                    <div class="friendship-header">
+                        <h2 class="section-title">¿Qué es la Amistad?</h2>
+                        <div class="hearts-animation">
+                            <span class="heart">❤️</span>
+                            <span class="heart">❤️</span>
+                            <span class="heart">❤️</span>
+                        </div>
+                    </div>
+                    <div class="definition">
+                        <p>
+                            La amistad es tener a alguien que cree en ti incluso cuando tú no crees en ti mismo. 
+                            Es poder hablar de espaguetis a las 9 de la noche y que resulte ser la mejor conversación del día. 
+                            Es apoyar los sueños del otro sin importar cuán grandes o locos sean.
+                        </p>
+                        <p>
+                            La amistad es lo que tenemos nosotros, Diana. Y hoy, en el día de los amigos, 
+                            quería que supieras cuán importante eres para mí.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 6: Despedida Épica -->
+            <section class="section section-6">
+                <div class="section-card farewell-card">
+                    <h2 class="section-title farewell-title">¡FELIZ DÍA DE LOS AMIGOS!</h2>
+                    <div class="farewell-text">
+                        <p class="farewell-main">Con admiración y cariño sincero,</p>
+                        <p class="farewell-from">Paul</p>
+                        <p class="farewell-date">Febrero 2026</p>
+                    </div>
+                    <button class="btn btn-finale" onclick="createFinalCelebration()">
+                        🎆 ¡Celebrar Juntos! 🎆
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Confetti Container -->
+        <div id="confetti-container"></div>
+    </div>
+
+    <!-- Cambiar a script.js después de compilar TypeScript -->
+    <script src="script.js"></script>
+</body>
+</html>

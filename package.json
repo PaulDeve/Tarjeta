@@ -1,0 +1,23 @@
+{
+  "name": "diana-friendship-card",
+  "version": "1.0.0",
+  "description": "Tarjeta épica e interactiva para el día de los amigos",
+  "main": "script.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": [
+    "friendship",
+    "card",
+    "typescript",
+    "svg",
+    "animation"
+  ],
+  "author": "Paul",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
