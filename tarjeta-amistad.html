@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 Tarjeta de Amistad - Para mi Mejor Amiga Diana 🌟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="24" font-size="24">💕</text></svg>') 0 0, auto;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .card-wrapper {
+            perspective: 1200px;
+            width: 90%;
+            max-width: 800px;
+            height: 600px;
+            position: relative;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-style: preserve-3d;
+        }
+
+        .card.flip {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 
+                        0 0 50px rgba(255, 107, 107, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        .card-face::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .card-face::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .card-face::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 200% 200%;
+            animation: cardGlow 3s ease infinite;
+        }
+
+        @keyframes cardGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            transform: rotateY(180deg);
+            overflow-y: auto;
+            padding: 30px;
+            justify-content: flex-start;
+            padding-top: 20px;
+        }
+
+        .card-back::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .card-back::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .card-back::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        /* FRONT SIDE STYLES */
+        .title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 
+                        2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: titleBounce 2s ease-in-out infinite;
+            letter-spacing: 2px;
+        }
+
+        @keyframes titleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 30px;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .heart-container {
+            font-size: 5rem;
+            margin: 20px 0;
+            animation: heartBeat 1s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 100, 100, 0.6));
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1.2); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .flip-instruction {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .flip-btn {
+            margin-top: 25px;
+            padding: 12px 40px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+        }
+
+        .flip-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .flip-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* BACK SIDE STYLES */
+        .back-content {
+            color: white;
+        }
+
+        .back-title {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            animation: slideInDown 0.8s ease-out;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-section {
+            margin: 12px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .message-section p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .emoji-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+            justify-content: center;
+        }
+
+        .emoji-item {
+            font-size: 2rem;
+            animation: emojiFloat 2s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .emoji-item:hover {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        @keyframes emojiFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* CONFETTI & PARTICLES */
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .particle {
+            position: fixed;
+            pointer-events: none;
+        }
+
+        /* INTERACTIVE ELEMENTS */
+        .interactive-button {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .interactive-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .interactive-button:active {
+            transform: scale(0.95);
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: #fff;
+            font-size: 2rem;
+            opacity: 0.8;
+            animation: floatUp 3s ease-in forwards;
+            filter: drop-shadow(0 0 5px rgba(255, 100, 100, 0.5));
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-300px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .heart-container {
+                font-size: 3.5rem;
+            }
+
+            .card-face {
+                padding: 30px;
+            }
+
+            .back-title {
+                font-size: 1.8rem;
+            }
+
+            .message-section {
+                margin: 15px 0;
+                padding: 15px;
+            }
+        }
+
+        /* SOUND TOGGLE */
+        .sound-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .sound-toggle:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        .sound-toggle.muted {
+            background: rgba(255, 100, 100, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts"></div>
+
+    <div class="container">
+        <div class="card-wrapper">
+            <div class="card">
+                <!-- FRONT OF CARD -->
+                <div class="card-face card-front">
+                    <div class="heart-container">💖</div>
+                    <h1 class="title">¡DÍA DE LA AMISTAD!</h1>
+                    <p class="subtitle">Para mi mejor amiga</p>
+                    <p class="subtitle" style="font-size: 2rem;">Diana ✨</p>
+                    <div style="margin-top: 20px; font-size: 2rem; animation: spin 4s linear infinite;">
+                        🌟
+                    </div>
+                    <p class="flip-instruction">📱 Haz clic para voltear 👉</p>
+                    <button class="flip-btn" onclick="flipCard()">VOLTEAR</button>
+                </div>
+
+                <!-- BACK OF CARD -->
+                <div class="card-face card-back">
+                    <div class="back-content">
+                        <h2 class="back-title">💌 Mi Mejor Amiga 💌</h2>
+
+                        <div class="message-section">
+                            <h3>✨ ¿Por qué eres especial?</h3>
+                            <p>
+                                Eres esa amiga que ilumina cada día, que convierte los momentos normales en recuerdos extraordinarios.
+                                Tu risa es contagiosa, tu corazón es oro puro y tu amistad es un regalo invaluable.
+                            </p>
+                        </div>
+
+                        <div class="message-section">
+                            <h3>🎭 Tus Superpoderes</h3>
+                            <div class="emoji-list">
+                                <span class="emoji-item" title="Hacerme reír">😄</span>
+                                <span class="emoji-item" title="Apoyarme siempre">💪</span>
+                                <span class="emoji-item" title="Dar los mejores abrazos">🤗</span>
+                                <span class="emoji-item" title="Consejos sabios">🧠</span>
+                                <span class="emoji-item" title="Aventuras épicas">🚀</span>
+                                <span class="emoji-item" title="Lealtad sin igual">👑</span>
+                            </div>
+                        </div>
+
+                        <div class="message-section">
+                            <h3>💎 Momentos que no olvido</h3>
+                            <p>
+                                Cada risa compartida, cada secreto guardado, cada aventura vivida juntas, 
+                                cada lágrima secada, cada triunfo celebrado... todo te hace irreemplazable en mi vida.
+                            </p>
+                        </div>
+
+                        <div class="message-section">
+                            <h3>🌈 Gracias por...</h3>
+                            <p>
+                                Ser mi cómplice, mi confidente, mi inspiración. Por creer en mí cuando yo no creía.
+                                Por estar en mis peores días y celebrar mis mejores momentos.
+                                Por ser exactamente como eres. ¡Eres increíble!
+                            </p>
+                        </div>
+
+                        <div class="message-section" style="margin-bottom: 15px;">
+                            <h3>🎉 Interactúa conmigo</h3>
+                            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 5px;">
+                                <button class="interactive-button" onclick="createConfetti()">🎊 Confeti</button>
+                                <button class="interactive-button" onclick="createHearts()">💕 Amor</button>
+                                <button class="interactive-button" onclick="playSound()">🎵 Sonido</button>
+                                <button class="interactive-button" onclick="toggleParticles()">✨ Magia</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sound-toggle" id="soundToggle" onclick="toggleSound()">🔊</div>
+
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+    </style>
+
+    <script>
+        // ===== FLIP CARD =====
+        const card = document.querySelector('.card');
+        let isFlipped = false;
+
+        function flipCard() {
+            isFlipped = !isFlipped;
+            card.classList.toggle('flip');
+            createHearts();
+            playSound('flip');
+        }
+
+        // ===== CONFETTI =====
+        function createConfetti() {
+            playSound('pop');
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.innerHTML = ['🎊', '🎉', '⭐', '💫', '🌟'][Math.floor(Math.random() * 5)];
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = '-10px';
+                confetti.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                confetti.style.animation = `confettiFall ${Math.random() * 2 + 2}s ease-out forwards`;
+                confetti.style.zIndex = 999;
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        // ===== FLOATING HEARTS =====
+        function createHearts() {
+            playSound('pop');
+            const heartsContainer = document.querySelector('.floating-hearts');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.bottom = '-50px';
+                heart.style.animationDelay = (Math.random() * 0.5) + 's';
+                heart.style.setProperty('--tx', (Math.random() - 0.5) * 200);
+                heartsContainer.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 3500);
+            }
+        }
+
+        // ===== PARTICLES EFFECT =====
+        let particlesActive = false;
+        function toggleParticles() {
+            particlesActive = !particlesActive;
+            if (particlesActive) {
+                playSound('pop');
+                createParticleEffect();
+            }
+        }
+
+        function createParticleEffect() {
+            if (!particlesActive) return;
+
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.innerHTML = ['✨', '⚡', '💫', '🌟'][Math.floor(Math.random() * 4)];
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = Math.random() * window.innerHeight + 'px';
+            particle.style.fontSize = (Math.random() * 30 + 20) + 'px';
+            particle.style.animation = `particleFloat ${Math.random() * 2 + 1}s ease-out forwards`;
+            particle.style.zIndex = 100;
+            document.body.appendChild(particle);
+
+            setTimeout(() => particle.remove(), 2500);
+
+            if (particlesActive) {
+                setTimeout(createParticleEffect, 100);
+            }
+        }
+
+        // ===== SOUND SYSTEM =====
+        let soundEnabled = true;
+        const soundToggle = document.getElementById('soundToggle');
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            soundToggle.classList.toggle('muted');
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+        }
+
+        function playSound(type = 'pop') {
+            if (!soundEnabled) return;
+
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+
+            oscillator.connect(gain);
+            gain.connect(audioContext.destination);
+
+            if (type === 'flip') {
+                oscillator.frequency.value = 600;
+                gain.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.3);
+            } else {
+                oscillator.frequency.value = 800;
+                gain.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.1);
+            }
+        }
+
+        // ===== ANIMATIONS =====
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                0% {
+                    transform: translateY(0) rotateZ(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(window.innerHeight) rotateZ(720deg);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes particleFloat {
+                0% {
+                    transform: scale(1) translateY(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(0) translateY(-200px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ===== MOUSE TRACKING GLOW =====
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            const card = document.querySelector('.card');
+            card.style.setProperty('--mouse-x', x);
+            card.style.setProperty('--mouse-y', y);
+        });
+
+        // ===== KEYBOARD SHORTCUT =====
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') flipCard();
+            if (e.key === ' ') { e.preventDefault(); createConfetti(); }
+            if (e.key === 'ArrowRight') createHearts();
+        });
+
+        // ===== AUTO FLOATING HEARTS =====
+        setInterval(() => {
+            if (Math.random() > 0.8) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.bottom = '-50px';
+                heart.style.fontSize = (Math.random() * 15 + 20) + 'px';
+                heart.style.opacity = '0.4';
+                document.querySelector('.floating-hearts').appendChild(heart);
+
+                setTimeout(() => heart.remove(), 3500);
+            }
+        }, 1000);
+
+        console.log('🎉 ¡Tarjeta de amistad cargada! Presiona ENTER para voltear, ESPACIO para confeti, DERECHA para corazones 💖');
+    </script>
+</body>
+</html>
