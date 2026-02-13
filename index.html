@@ -34,7 +34,7 @@
             position: relative;
             width: 100%;
             height: 100vh;
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
             perspective: 1000px;
@@ -412,10 +412,383 @@
         .sound-toggle.muted {
             background: rgba(255, 100, 100, 0.3);
         }
+
+        /* ===== TIMELINE STYLES ===== */
+        .timeline-container {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+        }
+
+        .timeline-item:nth-child(1) .timeline-content {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FF8E72 100%);
+        }
+
+        .timeline-item:nth-child(2) .timeline-content {
+            background: linear-gradient(135deg, #FFD93D 0%, #FFA500 100%);
+        }
+
+        .timeline-item:nth-child(3) .timeline-content {
+            background: linear-gradient(135deg, #6BCB77 0%, #4D96FF 100%);
+        }
+
+        .timeline-item:nth-child(4) .timeline-content {
+            background: linear-gradient(135deg, #FF9F43 0%, #EE5A6F 100%);
+        }
+
+        .timeline-item:nth-child(5) .timeline-content {
+            background: linear-gradient(135deg, #75dff1 0%, #FF1493 100%);
+        }
+
+        .timeline-item:nth-child(6) .timeline-content {
+            background: linear-gradient(135deg, #FF1493 0%, #FFB6C1 100%);
+        }
+
+        .timeline-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            margin: 0 15px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:nth-child(1) .timeline-circle {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FF8E72 100%);
+        }
+
+        .timeline-item:nth-child(2) .timeline-circle {
+            background: linear-gradient(135deg, #FFD93D 0%, #FFA500 100%);
+        }
+
+        .timeline-item:nth-child(3) .timeline-circle {
+            background: linear-gradient(135deg, #6BCB77 0%, #4D96FF 100%);
+        }
+
+        .timeline-item:nth-child(4) .timeline-circle {
+            background: linear-gradient(135deg, #FF9F43 0%, #EE5A6F 100%);
+        }
+
+        .timeline-item:nth-child(5) .timeline-circle {
+            background: linear-gradient(135deg, #66e9e9 0%, #FF1493 100%);
+        }
+
+        .timeline-item:nth-child(6) .timeline-circle {
+            background: linear-gradient(135deg, #FF1493 0%, #FFB6C1 100%);
+        }
+
+        .timeline-circle:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-title {
+            font-weight: bold;
+            font-size: 1rem;
+            color: white;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 8px;
+        }
+
+        .timeline-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.4;
+        }
+
+        .timeline-emoji {
+            font-size: 2rem;
+            margin-right: 8px;
+            display: inline-block;
+        }
+
+        /* ===== COUNTER STYLES ===== */
+        .days-counter {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            animation: counterPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes counterPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .counter-title {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .counter-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1;
+        }
+
+        .counter-label {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 8px;
+        }
+
+        /* ===== EASTER EGG STYLES ===== */
+        .easter-egg {
+            position: fixed;
+            pointer-events: none;
+            animation: easterEggFloat 3s ease-out forwards;
+            font-size: 2rem;
+            z-index: 9999;
+        }
+
+        @keyframes easterEggFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(0.5) rotate(360deg);
+            }
+        }
+
+        .secret-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            color: #fff;
+            padding: 40px 60px;
+            border-radius: 20px;
+            font-size: 1.5rem;
+            z-index: 10000;
+            text-align: center;
+            animation: secretAppear 0.5s ease;
+            box-shadow: 0 0 50px rgba(255, 107, 107, 0.6);
+            border: 3px solid #FF6B9D;
+            max-width: 80%;
+            cursor: pointer;
+        }
+
+        .secret-message::after {
+            content: "";
+            display: block;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 15px;
+        }
+
+        @keyframes secretAppear {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .interactive-emoji {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .interactive-emoji:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .interactive-emoji:active {
+            transform: scale(0.9);
+        }
+
+        /* ===== VALENTINE COUNTDOWN STYLES ===== */
+        .countdown-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9998;
+            flex-direction: column;
+        }
+
+        .countdown-overlay.hidden {
+            display: none;
+        }
+
+        .countdown-content {
+            text-align: center;
+            color: white;
+            animation: countdownBounce 1s ease-in-out infinite;
+        }
+
+        @keyframes countdownBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .countdown-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            animation: titleFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .countdown-timer {
+            font-size: 5rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px 50px;
+            border-radius: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            letter-spacing: 5px;
+        }
+
+        .countdown-label {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .countdown-message {
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 40px;
+            font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .heart-emoji-countdown {
+            font-size: 4rem;
+            margin-top: 30px;
+            animation: heartBeat 1s ease-in-out infinite;
+        }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+        }
+
+        .floating-heart {
+            position: fixed;
+            pointer-events: none;
+            filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.4));
+        }
+
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            filter: drop-shadow(0 0 10px rgba(100, 200, 255, 0.4));
+        }
     </style>
 </head>
 <body>
     <div class="floating-hearts"></div>
+
+    <!-- VALENTINE COUNTDOWN OVERLAY -->
+    <div class="countdown-overlay" id="countdownOverlay">
+        <div class="countdown-content">
+            <div class="countdown-title">💝 Día de San Valentín 💝</div>
+            <div class="countdown-timer" id="countdownTimer">00:00:00</div>
+            <div class="countdown-label" id="countdownLabel">Horas : Minutos : Segundos</div>
+            <div class="countdown-message">Tu tarjeta especial se revelará pronto...</div>
+            <div class="heart-emoji-countdown">💖</div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="card-wrapper">
@@ -438,6 +811,12 @@
                     <div class="back-content">
                         <h2 class="back-title">💌 Mi Mejor Amiga 💌</h2>
 
+                        <div class="days-counter">
+                            <div class="counter-title">⏳ Nuestros Días de Amistad</div>
+                            <div class="counter-number" id="daysCount">0</div>
+                            <div class="counter-label" id="daysLabel">desde el 27 de octubre</div>
+                        </div>
+
                         <div class="message-section">
                             <h3>✨ ¿Por qué eres especial?</h3>
                             <p>
@@ -447,22 +826,22 @@
                         </div>
 
                         <div class="message-section">
-                            <h3>🎭 Tus Superpoderes</h3>
+                            <h3>🎭 Tus Superpoderes <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">(¡haz clic!)</span></h3>
                             <div class="emoji-list">
-                                <span class="emoji-item" title="Hacerme reír">😄</span>
-                                <span class="emoji-item" title="Apoyarme siempre">💪</span>
-                                <span class="emoji-item" title="Dar los mejores abrazos">🤗</span>
-                                <span class="emoji-item" title="Consejos sabios">🧠</span>
-                                <span class="emoji-item" title="Aventuras épicas">🚀</span>
-                                <span class="emoji-item" title="Lealtad sin igual">👑</span>
+                                <span class="emoji-item interactive-emoji" title="Hacerme reír" onclick="triggerEasterEgg(event, '😄', '¡Tu risa es mi medicina! 💊')">😄</span>
+                                <span class="emoji-item interactive-emoji" title="Apoyarme siempre" onclick="triggerEasterEgg(event, '💪', '¡Eres mi fortaleza! 🦸')">💪</span>
+                                <span class="emoji-item interactive-emoji" title="Dar los mejores abrazos" onclick="triggerEasterEgg(event, '🤗', '¡Los mejores abrazos del mundo! 🌍')">🤗</span>
+                                <span class="emoji-item interactive-emoji" title="Consejos sabios" onclick="triggerEasterEgg(event, '🧠', '¡Tus palabras cambian mi día! ✨')">🧠</span>
+                                <span class="emoji-item interactive-emoji" title="Aventuras épicas" onclick="triggerEasterEgg(event, '🚀', '¡Vamos a conquistar el mundo juntos! 🌟')">🚀</span>
+                                <span class="emoji-item interactive-emoji" title="Lealtad sin igual" onclick="triggerEasterEgg(event, '👑', '¡Eres mi reina! 👸')">👑</span>
                             </div>
                         </div>
 
                         <div class="message-section">
                             <h3>💎 Momentos que no olvido</h3>
                             <p>
-                                Cada risa compartida, cada secreto guardado, cada aventura vivida juntas, 
-                                cada lágrima secada, cada triunfo celebrado... todo te hace irreemplazable en mi vida.
+                                Cada risa compartida, cada secreto guardado, cada aventura vivida juntos, 
+                                cada lágrima secada xD, cada triunfo celebrado... todo te hace irreemplazable en mi vida.
                             </p>
                         </div>
 
@@ -475,12 +854,75 @@
                             </p>
                         </div>
 
-                        <div class="message-section" style="margin-bottom: 15px;">
-                            <h3>🎉 Interactúa conmigo</h3>
+                        <div class="message-section" style="margin-bottom: 15px;">                            <h3>⏰ Nuestra Línea de Tiempo ✨</h3>
+                            <div class="timeline-container">
+                                <!-- Timeline Item 1 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <div class="timeline-title"><span class="timeline-emoji">🍝</span>Primera Conversacion despues de pedirte tu numero xD</div>
+                                        <div class="timeline-date">27 de Octubre</div>
+                                        <div class="timeline-description">Descubrimos tu "mamarracho culinario jsjsjs" - espaguetis (arroz + pasta)! Comenzó todo con risas JAJAJA 😄</div>
+                                    </div>
+                                    <div class="timeline-circle">1</div>
+                                </div>
+
+                                <!-- Timeline Item 2 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <div class="timeline-title"><span class="timeline-emoji">😨</span>Confesión de Traumas</div>
+                                        <div class="timeline-date">27-28 de Octubre</div>
+                                        <div class="timeline-description">Tu histórica anécdota de la carne roja que casi termina en tragedia... ¡sin carne de ahí en adelante! XD</div>
+                                    </div>
+                                    <div class="timeline-circle">2</div>
+                                </div>
+
+                                <!-- Timeline Item 3 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <div class="timeline-title"><span class="timeline-emoji">📚</span>Exposición & Nervios</div>
+                                        <div class="timeline-date">28-29 de Octubre</div>
+                                        <div class="timeline-description">Bases de Datos + Tu toma de local. Estabas aterrado, pero ¡devaste como el profesional que eres! 🎤</div>
+                                    </div>
+                                    <div class="timeline-circle">3</div>
+                                </div>
+
+                                <!-- Timeline Item 4 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <div class="timeline-title"><span class="timeline-emoji">🏥</span>Compartimos Sueños</div>
+                                        <div class="timeline-date">28 de Octubre</div>
+                                        <div class="timeline-description">Me contaste de Medicina Forense. Yo de Ingeniería Química. Ambos con carreras y sueños hermosos 💭</div>
+                                    </div>
+                                    <div class="timeline-circle">4</div>
+                                </div>
+
+                                <!-- Timeline Item 5 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <div class="timeline-title"><span class="timeline-emoji">�</span>Tu Cumpleaños Especial</div>
+                                        <div class="timeline-date">1 de Noviembre</div>
+                                        <div class="timeline-description">¡Día especial! Te deseé que disfrutes un año más lleno de experiencia, prosperidad y amor. ¡Espero que sea memorable! 🎉</div>
+                                    </div>
+                                    <div class="timeline-circle">5</div>
+                                </div>
+
+                                <!-- Timeline Item 6 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <div class="timeline-title"><span class="timeline-emoji">🎁</span>Hoy, día de amistad</div>
+                                        <div class="timeline-date">12 de Febrero</div>
+                                        <div class="timeline-description">Esta tarjeta especial para conmemorar nuestra valiosa amistad. ¡Eres increíble, Diana! 💖</div>
+                                    </div>
+                                    <div class="timeline-circle">6</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="message-section">                            <h3>🎉 Interactúa conmigo</h3>
                             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 5px;">
                                 <button class="interactive-button" onclick="createConfetti()">🎊 Confeti</button>
                                 <button class="interactive-button" onclick="createHearts()">💕 Amor</button>
-                                <button class="interactive-button" onclick="playSound()">🎵 Sonido</button>
+                                <button class="interactive-button" onclick="playCustomAudio()">🎵 Mi Voz</button>
                                 <button class="interactive-button" onclick="toggleParticles()">✨ Magia</button>
                             </div>
                         </div>
@@ -520,13 +962,42 @@
                 confetti.className = 'confetti';
                 confetti.innerHTML = ['🎊', '🎉', '⭐', '💫', '🌟'][Math.floor(Math.random() * 5)];
                 confetti.style.left = Math.random() * window.innerWidth + 'px';
-                confetti.style.top = '-10px';
+                confetti.style.top = '-50px';
                 confetti.style.fontSize = (Math.random() * 20 + 20) + 'px';
-                confetti.style.animation = `confettiFall ${Math.random() * 2 + 2}s ease-out forwards`;
-                confetti.style.zIndex = 999;
+                confetti.style.position = 'fixed';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '999';
+                
+                const duration = Math.random() * 3 + 4; // 4-7 segundos
+                const xOffset = (Math.random() - 0.5) * 200;
+                
+                confetti.style.animation = `none`;
                 document.body.appendChild(confetti);
-
-                setTimeout(() => confetti.remove(), 3000);
+                
+                // Usar requestAnimationFrame para animación más suave
+                let elapsed = 0;
+                const startTime = Date.now();
+                
+                function animate() {
+                    elapsed = Date.now() - startTime;
+                    const progress = elapsed / (duration * 1000);
+                    
+                    if (progress >= 1) {
+                        confetti.remove();
+                        return;
+                    }
+                    
+                    const y = -50 + (window.innerHeight + 100) * progress;
+                    const rotation = progress * 720;
+                    const opacity = 1 - progress;
+                    
+                    confetti.style.transform = `translateY(${y}px) translateX(${xOffset * progress}px) rotateZ(${rotation}deg)`;
+                    confetti.style.opacity = opacity;
+                    
+                    requestAnimationFrame(animate);
+                }
+                
+                animate();
             }
         }
 
@@ -540,11 +1011,38 @@
                 heart.innerHTML = '💖';
                 heart.style.left = Math.random() * 100 + '%';
                 heart.style.bottom = '-50px';
-                heart.style.animationDelay = (Math.random() * 0.5) + 's';
-                heart.style.setProperty('--tx', (Math.random() - 0.5) * 200);
+                heart.style.fontSize = (Math.random() * 20 + 30) + 'px';
+                heart.style.position = 'fixed';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '100';
+                
+                const duration = Math.random() * 2 + 3.5; // 3.5-5.5 segundos
+                const tx = (Math.random() - 0.5) * 200;
+                
                 heartsContainer.appendChild(heart);
-
-                setTimeout(() => heart.remove(), 3500);
+                
+                let elapsed = 0;
+                const startTime = Date.now();
+                
+                function animate() {
+                    elapsed = Date.now() - startTime;
+                    const progress = elapsed / (duration * 1000);
+                    
+                    if (progress >= 1) {
+                        heart.remove();
+                        return;
+                    }
+                    
+                    const y = window.innerHeight + 50 - (window.innerHeight + 100) * progress;
+                    const opacity = 1 - (progress * progress);
+                    
+                    heart.style.transform = `translateX(${tx * progress}px) translateY(${-y}px) scale(${1 - progress * 0.3})`;
+                    heart.style.opacity = opacity;
+                    
+                    requestAnimationFrame(animate);
+                }
+                
+                animate();
             }
         }
 
@@ -567,11 +1065,35 @@
             particle.style.left = Math.random() * window.innerWidth + 'px';
             particle.style.top = Math.random() * window.innerHeight + 'px';
             particle.style.fontSize = (Math.random() * 30 + 20) + 'px';
-            particle.style.animation = `particleFloat ${Math.random() * 2 + 1}s ease-out forwards`;
-            particle.style.zIndex = 100;
+            particle.style.position = 'fixed';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '100';
             document.body.appendChild(particle);
-
-            setTimeout(() => particle.remove(), 2500);
+            
+            const duration = Math.random() * 2 + 1; // 1-3 segundos
+            let elapsed = 0;
+            const startTime = Date.now();
+            
+            function animate() {
+                elapsed = Date.now() - startTime;
+                const progress = elapsed / (duration * 1000);
+                
+                if (progress >= 1) {
+                    particle.remove();
+                    return;
+                }
+                
+                const scale = 1 - progress;
+                const y = -200 * progress;
+                const opacity = 1 - progress;
+                
+                particle.style.transform = `translateY(${y}px) scale(${scale})`;
+                particle.style.opacity = opacity;
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
 
             if (particlesActive) {
                 setTimeout(createParticleEffect, 100);
@@ -581,11 +1103,51 @@
         // ===== SOUND SYSTEM =====
         let soundEnabled = true;
         const soundToggle = document.getElementById('soundToggle');
+        let currentAudio = null;
 
         function toggleSound() {
             soundEnabled = !soundEnabled;
             soundToggle.classList.toggle('muted');
             soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+            
+            // Detener audio si está reproduciéndose y se silencia
+            if (!soundEnabled && currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+        }
+
+        function playCustomAudio() {
+            if (!soundEnabled) {
+                showSecretMessage('🔇 ¡El sonido está mutedo! Actívalo con el 🔊');
+                return;
+            }
+
+            // Detener audio anterior si está reproduciéndose
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            // Crear nuevo elemento de audio
+            currentAudio = new Audio('You Make Me.wav');
+            currentAudio.volume = 0.8;
+            
+            currentAudio.onerror = () => {
+                showSecretMessage('❌ No se pudo cargar el audio.\nAsegúrate de que "You Make Me.wav" esté en la carpeta del proyecto.');
+            };
+            
+            currentAudio.onplay = () => {
+                showSecretMessage('🎵 ¡Escuchando tu voz! 💕');
+            };
+            
+            currentAudio.onended = () => {
+                currentAudio = null;
+            };
+
+            currentAudio.play().catch(err => {
+                showSecretMessage('❌ Error al reproducir: ' + err.message);
+            });
         }
 
         function playSound(type = 'pop') {
@@ -673,7 +1235,201 @@
         }, 1000);
 
         console.log('🎉 ¡Tarjeta de amistad cargada! Presiona ENTER para voltear, ESPACIO para confeti, DERECHA para corazones 💖');
+
+        // ===== DAYS COUNTER =====
+        function calculateDaysTogether() {
+            const startDate = new Date(2025, 9, 27); // October 27, 2025
+            const today = new Date(2026, 1, 12); // February 12, 2026
+            const timeDiff = today - startDate;
+            const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+            return daysDiff;
+        }
+
+        function updateDaysCounter() {
+            const daysCount = calculateDaysTogether();
+            const daysElement = document.getElementById('daysCount');
+            const daysLabel = document.getElementById('daysLabel');
+            
+            if (daysElement) {
+                let current = 0;
+                const increment = Math.ceil(daysCount / 20);
+                
+                const interval = setInterval(() => {
+                    current += increment;
+                    if (current >= daysCount) {
+                        current = daysCount;
+                        clearInterval(interval);
+                    }
+                    daysElement.textContent = current;
+                }, 30);
+            }
+        }
+
+        // ===== EASTER EGGS SYSTEM =====
+        let easterEggClicks = 0;
+        let secretCodesTriggered = [];
+
+        function triggerEasterEgg(event, emoji, message) {
+            event.stopPropagation();
+            easterEggClicks++;
+            playSound('pop');
+            
+            // Crear efecto visual en el emoji
+            const egg = document.createElement('div');
+            egg.className = 'easter-egg';
+            egg.textContent = emoji;
+            egg.style.left = event.clientX + 'px';
+            egg.style.top = event.clientY + 'px';
+            document.body.appendChild(egg);
+            
+            setTimeout(() => egg.remove(), 3000);
+            
+            // Mostrar mensaje secreto
+            showSecretMessage(message);
+            
+            // Verificar combinaciones secretas
+            checkSecretCombinations();
+        }
+
+        function showSecretMessage(message) {
+            const existing = document.querySelector('.secret-message');
+            if (existing) existing.remove();
+            
+            const secretMsg = document.createElement('div');
+            secretMsg.className = 'secret-message';
+            secretMsg.textContent = message;
+            secretMsg.onclick = (e) => {
+                e.stopPropagation();
+                secretMsg.remove();
+            };
+            document.body.appendChild(secretMsg);
+            
+            // Cierre automático después de 5 segundos
+            setTimeout(() => {
+                if (secretMsg.parentNode) secretMsg.remove();
+            }, 5000);
+        }
+
+        function checkSecretCombinations() {
+            // Easter egg: Presionar todos los emojis en orden (combinación secreta)
+            if (easterEggClicks === 6) {
+                triggerSpecialSurprise();
+            }
+            
+            // Easter egg: Cada 10 clicks
+            if (easterEggClicks % 10 === 0) {
+                showRandomSurprise();
+            }
+        }
+
+        function triggerSpecialSurprise() {
+            showSecretMessage('🎊 ¡ENCONTRASTE UNA SORPRESA ESPECIAL! 🎊\\n¡Eres increíble por hacer clic en todo! 💖\\n¡Te quiero un montón! ✨');
+            
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => createConfetti(), i * 200);
+            }
+            
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => createHearts(), i * 300);
+            }
+        }
+
+        const surprises = [
+            '💭 ¿Sabías que eres la razón de mi sonrisa?',
+            '🌟 Cada día contigo es un regalo',
+            '💕 Tu amistad es lo mejor que me pasó',
+            '✨ Eres más valiosa que el oro',
+            '🎯 Juntos somos imparables',
+            '🌈 Pintas mi mundo de colores',
+            '🔥 ¡Eres asombrosa!',
+            '👑 Mereces lo mejor de lo mejor',
+            '💫 Tu luz brilla en todo lo que haces',
+            '🚀 Vamos a hacer grandes cosas'
+        ];
+
+        function showRandomSurprise() {
+            const randomSurprise = surprises[Math.floor(Math.random() * surprises.length)];
+            showSecretMessage(randomSurprise);
+        }
+
+        // ===== SECRET CODE TRIGGERS =====
+        let keySequence = [];
+        const secretCodes = {
+            'diana': '💌 Diana es el mejor nombre del mundo',
+            'paul': '🎤 Paul = Programador + Amigo + Excepcional',
+            'love': '❤️ Eres amada más de lo que imaginas',
+            'forever': '♾️ Esta amistad es para siempre'
+        };
+
+        document.addEventListener('keydown', (e) => {
+            keySequence.push(e.key.toLowerCase());
+            keySequence = keySequence.slice(-15);
+            
+            const sequence = keySequence.join('');
+            Object.keys(secretCodes).forEach(code => {
+                if (sequence.includes(code)) {
+                    showSecretMessage(secretCodes[code]);
+                    keySequence = [];
+                }
+            });
+        });
+
+        // Inicializar contadores al cargar
+        window.addEventListener('load', () => {
+            updateDaysCounter();
+            initializeValentineCountdown();
+        });
+
+        // ===== VALENTINE COUNTDOWN =====
+        let countdownCompleted = false;
+        
+        function initializeValentineCountdown() {
+            const valentineDate = new Date(2026, 1, 12, 19, 14, 0); // February 14, 2026 at 06:00 (6 AM)
+            const countdownOverlay = document.getElementById('countdownOverlay');
+            const countdownTimer = document.getElementById('countdownTimer');
+            const container = document.querySelector('.container');
+            
+            function updateCountdown() {
+                if (countdownCompleted) return; // Prevenir múltiples ejecuciones
+                
+                const now = new Date();
+                const timeDiff = valentineDate - now;
+                
+                if (timeDiff <= 0) {
+                    // El tiempo llegó a cero, mostrar tarjeta SOLO UNA VEZ
+                    countdownCompleted = true;
+                    countdownOverlay.classList.add('hidden');
+                    if (container) container.style.display = 'flex';
+                    
+                    // Mostrar confeti de celebración
+                    for (let i = 0; i < 3; i++) {
+                        setTimeout(() => createConfetti(), i * 300);
+                        setTimeout(() => createHearts(), i * 400);
+                    }
+                    
+                    showSecretMessage('🎉 ¡FELIZ DÍA DE SAN VALENTÍN! 🎉  ¡Tu tarjeta especial está lista! 💖');
+                    return;
+                }
+                
+                const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                
+                // Formato con ceros a la izquierda
+                const formattedTime = 
+                    String(hours).padStart(2, '0') + ':' +
+                    String(minutes).padStart(2, '0') + ':' +
+                    String(seconds).padStart(2, '0');
+                
+                countdownTimer.textContent = formattedTime;
+            }
+            
+            // Primera actualización inmediata
+            updateCountdown();
+            
+            // Actualizar cada segundo
+            setInterval(updateCountdown, 1000);
+        }
     </script>
 </body>
 </html>
-
